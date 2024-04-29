@@ -14,7 +14,6 @@ resource "aws_instance" "web" {
   instance_type          = var.server_size
   vpc_security_group_ids = [aws_security_group.web.id]
   user_data              = filebase64("${path.module}/user_data.sh")
-}
 
   tags = {
     Name  = "${var.server_name}-WebServer"
