@@ -1,14 +1,3 @@
-data "aws_ami" "latest_ubuntu" {
-  most_recent = true
-
-  filter {
-    name   = "description"
-    values = ["Canonical, Ubuntu, 24.04 LTS, amd64 noble image build on 2024-04-23"]
-  }
-
-  owners = ["099720109477"] # Canonical owner ID for Ubuntu AMIs
-}
-
 resource "aws_instance" "web" {
   ami                    = "ami-04b70fa74e45c3917"  # Use the specific AMI ID
   instance_type          = var.server_size
@@ -20,7 +9,6 @@ resource "aws_instance" "web" {
     Owner = "Dmitry Zhuravlev"
   }
 }
-
 
 resource "aws_default_vpc" "default" {} # This need to be added since AWS Provider v4.29+ to get VPC id
 
